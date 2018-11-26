@@ -1,0 +1,80 @@
+body {
+	background-color: #141314;
+	color: #fff;
+	font-size: 16px;
+}
+
+/**
+ * Header
+ */
+.header {
+	background-color: rgba(100, 100, 100, .0);
+	position: relative;
+	text-align: center;
+	z-index: 20;
+}
+.header-logo {
+// 	background-color: #0f0;
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 10px 0;
+}
+.header-logo img {
+	height: 4vh;
+}
+
+/**
+ * Building Hero 
+ */
+.building-hero {
+// 	background-color: #0f0;
+	background-image: url(/assets/images/building-facade.png);
+	background-position: center -5vh;
+	background-size: cover;
+	box-sizing: border-box;
+	height: 25vh;
+}
+
+/**
+ * Menu
+ */
+.menu-section {
+	display: flex;
+}
+.menu-item {
+	display: flex;
+	justify-content: space-between;
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-weight: 400;
+	font-style: normal;
+	padding: 2em 2em;
+}
+.menu-item h3 {
+	font-size: 1.5em;
+}
+.item-price p {
+
+}
+.item-deets {
+	flex: 2;
+}
+.item-name {
+	text-transform: uppercase;
+}
+.item-description {
+	font-family: montserrat,sans-serif;
+	font-weight: 200;
+	font-style: italic;
+}
+.item-price {
+	flex: 1;
+	text-align: right;
+}
+.item-price p {
+}
+.item-upgrade {
+}
+.cents {
+	font-size: .6em;
+	vertical-align: top;
+}
