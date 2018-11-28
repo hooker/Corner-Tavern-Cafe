@@ -11,14 +11,14 @@ body {
  * Header
  */
 .header {
-	background-color: rgba(100, 100, 100, .0);
+	background-color: #141314;
 	position: fixed;
 	text-align: center;
 	width: 100vw;
 	z-index: 20;
 }
 .header-logo {
-// 	background-color: #0f0;
+// 	background-color: #141314;
 	box-sizing: border-box;
 	display: inline-block;
 	padding: 10px 0;
@@ -33,7 +33,7 @@ body {
  * Building Hero 
  */
 .building-hero {
-// 	background-color: #0f0;
+	background-color: #141314;
 	background-image: url(/assets/images/building-facade-trimmed.png);
 	background-origin: border-box;
 	background-position: center;
