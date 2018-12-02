@@ -55,13 +55,23 @@ body {
  */
 .menu-section {
 	display: flex;
+	flex-flow: row wrap;
+}
+@media all and (max-width: 1020px) {
+	.menu-section {
+		flex-flow: column;
+	}
+	.menu-item {
+		flex: 1 0 100vw;
+	}
 }
 .menu-item {
 	display: flex;
-	justify-content: space-between;
+	flex: 1;
 	font-family: letter-gothic-std, Trebuchet MS, monospace;
 	font-weight: 400;
 	font-style: normal;
+	justify-content: space-between;
 	padding: 0  2em;
 }
 .menu-item ~ .menu-item {
