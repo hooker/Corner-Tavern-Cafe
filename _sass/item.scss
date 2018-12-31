@@ -1,0 +1,44 @@
+/* Item block */
+.item {
+	display: flex;
+	justify-content: space-between;
+}
+.item__name,
+.item__price {
+	font-size: 1.5em;
+}
+.item__info {
+	flex: 1;
+}
+.item__pricing {
+	flex: 0 1 auto;
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-weight: 400;
+	font-style: normal;
+	text-align: right;
+}
+.item__name {
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-weight: 400;
+	font-style: normal;
+	text-transform: uppercase;
+}
+.item__description {
+	font-family: montserrat,sans-serif;
+	font-weight: 200;
+	font-style: italic;
+	text-transform: lowercase;
+}
+.item__price {
+}
+.item__price_cents {
+	font-size: .6em;
+	vertical-align: top;
+}
+.item__price_portion {
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-weight: 400;
+	font-size: 1rem;
+	font-style: italic;
+}
+.item__price_upgrade {}
