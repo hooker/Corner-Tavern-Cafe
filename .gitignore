@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+=======
+google[a-z0-9]*.html
+>>>>>>> Stashed changes
