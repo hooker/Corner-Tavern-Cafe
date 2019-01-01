@@ -28,5 +28,47 @@
 <footer class="footer page__footer">
 	{% include menu.html %}
 </footer>
+<script src="/assets/js/jquery-3.3.1.js"></script>
+<script>
+$( document ).ready(function() {
+	var $facade = $( ".facade__base" );
+	var $featuredSpirits = $( "#featuredSpirits" );
+	var featuredSpiritsBounds = {};
+	featuredSpiritsBounds.top = $featuredSpirits.offset().top;
+	featuredSpiritsBounds.bottom = $featuredSpirits.height() + featuredSpiritsBounds.top;
+	$featuredSpirits.click(function(event) {
+		$facade.toggleClass( "facade__base_featured-spirits" );
+	});
+	
+	/* Calculate initial viewport size */
+	var viewport = {};
+	viewport.top = $( window ).scrollTop() + ($( window ).height() / 2.);
+	viewport.bottom = $( window ).height() + viewport.top - ($( window ).height() / 2.);
+	
+	/* Update viewport size if window changes size */
+	$( window ).resize(function( event ) {
+		viewport.top = $( window ).scrollTop() + ($( window ).height() / 2.);
+		viewport.bottom = $( window ).height() + viewport.top - ($( window ).height() / 2.);
+		console.log("Viewport changed: " + JSON.stringify(viewport, null, 2));
+	});
+	
+	/* Handle scroll events */
+	$( window ).scroll(function( event ) {
+		if ((
+		     (featuredSpiritsBounds.top < viewport.bottom) && 
+		     (featuredSpiritsBounds.top > viewport.top)
+		    ) || (
+		     (featuredSpiritsBounds.bottom > viewport.top) &&
+		     (featuredSpiritsBounds.bottom < viewport.bottom)
+		    )) {
+			$facade.addClass( "facade__base_featured-spirits" );
+			     
+		} else {
+			$facade.removeClass( "facade__base_featured-spirits" );
+		}
+	});
+	
+});
+</script>
 </body>
 </html>
