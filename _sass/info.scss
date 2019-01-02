@@ -7,20 +7,17 @@
 	flex-wrap: wrap;
 }
 .info__title {
-	font-family: letter-gothic-std, Trebuchet MS, monospace;
-	font-size: 2em;
-	font-style: normal;
-    font-weight: 700;
+	box-sizing: border-box;
+	padding: 0 .5em 1em;
 	text-align: center;
     width: 100%;
 }
 .info__paragraphs {
 	flex: 2 0 320px;
-	
+	padding: 0 1em .125em;
 }
 .info__paragraph {
-	padding: 1em 1em 0 1em;
-	text-align: justify;
+	padding: 0 0 1em;
 }
 .info__administration {
 	display: flex;
@@ -28,7 +25,7 @@
 	flex: 0 1 220px;
 }
 .info__phone {
-	padding: 1em 1em 0 0;
+	padding: 0 1em 0 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
