@@ -1,2 +1,58 @@
 /* Info block */
-.info {}
+.info {
+}
+.info__about {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.info__title {
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-size: 2em;
+	font-style: normal;
+    font-weight: 700;
+	text-align: center;
+    width: 100%;
+}
+.info__paragraphs {
+	flex: 2 0 320px;
+	
+}
+.info__paragraph {
+	padding: 1em 1em 0 1em;
+	text-align: justify;
+}
+.info__administration {
+	display: flex;
+	flex-direction: column;
+	flex: 0 1 220px;
+}
+.info__phone {
+	padding: 1em 1em 0 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-style: normal;
+}
+.info__phone-label {
+	flex: 1 0 auto;
+	font-weight: 700;
+}
+.info__phone-number {
+	flex: 0 0 auto;
+}
+.info__hours-label {
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-style: normal;
+	font-weight: 700;
+	padding: 1em 1em 0 0;
+	text-align: center;
+	text-decoration: underline;
+}
+.info__hours {
+	font-family: letter-gothic-std, Trebuchet MS, monospace;
+	font-style: normal;
+	padding: .75em 1em 0 0;
+}

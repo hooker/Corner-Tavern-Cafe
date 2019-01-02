@@ -15,7 +15,7 @@
 	margin: 0 auto -50vh;
 }
 .page__info {
-	padding-top: 50vh;
+	padding-top: calc(50vh + 6em);
 	margin: 0 auto -50vh;
 }
 .page__featured {
@@ -23,5 +23,6 @@
 	margin: 0 auto -50vh;
 }
 .page__footer {
+	padding-top: 50vh;
 	margin: 0 auto -50vh;
 }

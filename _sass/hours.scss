@@ -1,0 +1,17 @@
+/* Hours block */
+.hours {
+	
+}
+.hours__line {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.hours__day {
+	flex: 1 0 auto;	
+	font-weight: 700;
+}
+.hours__times {
+	flex: 0 0 auto;
+}
