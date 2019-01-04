@@ -2,8 +2,10 @@
 .header {
 }
 .header__facade {
-	background: linear-gradient(#141314 95%, #14131400);
+	background: linear-gradient(#141314 99%, #14131400);
 	height: 100%;
+	margin: 0 auto;
+	position: relative;
 }
 .header__nav {
 	position: absolute;

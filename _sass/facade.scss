@@ -1,15 +1,22 @@
 /* Facade block */
-.facade {}
-.facade__base {
-	background-image: url(/assets/images/facade__base.png);
-	background-origin: border-box;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	height: 100%;
+.facade {
 }
-.facade__base_featured-spirits {
-	background-image: 
-		url(/assets/images/facade__base.png), 
-		url(/assets/images/facade__base_featured-spirits.png);
+.facade__base {
+    display: block;
+	height: 100%;
+	position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.facade__featured-spirits {
+    display: none;
+	position: absolute;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.facade__featured-spirits_lit {
+	display: block;
 }

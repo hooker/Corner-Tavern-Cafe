@@ -26,40 +26,47 @@
 <script src="/assets/js/jquery-3.3.1.js"></script>
 <script>
 $( document ).ready(function() {
-	var $facade = $( ".facade__base" );
+	var $facade = $( ".facade__featured-spirits" );
+	
 	var $featuredSpirits = $( "#featuredSpirits" );
 	var featuredSpiritsBounds = {};
 	featuredSpiritsBounds.top = $featuredSpirits.offset().top;
 	featuredSpiritsBounds.bottom = $featuredSpirits.height() + featuredSpiritsBounds.top;
-	$featuredSpirits.click(function(event) {
-		$facade.toggleClass( "facade__base_featured-spirits" );
-	});
 	
 	/* Calculate initial viewport size */
+	/* First determine height of the header */
+	var headerHeight = $( ".header" ).outerHeight();
+	/* Use the header height to offset the area to watch */
 	var viewport = {};
-	viewport.top = $( window ).scrollTop() + ($( window ).height() / 2.);
-	viewport.bottom = $( window ).height() + viewport.top - ($( window ).height() / 2.);
+	viewport.top = $( window ).scrollTop() + headerHeight;
+	viewport.bottom = viewport.top + headerHeight;
 	
 	/* Update viewport size if window changes size */
 	$( window ).resize(function( event ) {
-		viewport.top = $( window ).scrollTop() + ($( window ).height() / 2.);
-		viewport.bottom = $( window ).height() + viewport.top - ($( window ).height() / 2.);
+		headerHeight = $( ".header" ).outerHeight();
+		viewport.top = $( window ).scrollTop() + headerHeight;
+		viewport.bottom = viewport.top + headerHeight;
 		console.log("Viewport changed: " + JSON.stringify(viewport, null, 2));
 	});
 	
 	/* Handle scroll events */
 	$( window ).scroll(function( event ) {
+		viewport.top = $( window ).scrollTop() + headerHeight;
+		viewport.bottom = viewport.top + headerHeight;
 		if ((
-		     (featuredSpiritsBounds.top < viewport.bottom) && 
-		     (featuredSpiritsBounds.top > viewport.top)
+		     (featuredSpiritsBounds.top > viewport.top) && 
+		     (featuredSpiritsBounds.top < viewport.bottom)
 		    ) || (
 		     (featuredSpiritsBounds.bottom > viewport.top) &&
 		     (featuredSpiritsBounds.bottom < viewport.bottom)
+		    ) || (
+		     (featuredSpiritsBounds.top < viewport.top) &&
+		     (featuredSpiritsBounds.bottom > viewport.bottom)
 		    )) {
-			$facade.addClass( "facade__base_featured-spirits" );
+			$facade.addClass( "facade__featured-spirits_lit" );
 			     
 		} else {
-			$facade.removeClass( "facade__base_featured-spirits" );
+			$facade.removeClass( "facade__featured-spirits_lit" );
 		}
 	});
 	
