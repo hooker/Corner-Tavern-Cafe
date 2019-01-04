@@ -50,7 +50,14 @@ $( document ).ready(function() {
 	});
 	
 	/* Handle scroll events */
+	var scrollTimeout; // global variable to limit scroll handler frequency
 	$( window ).scroll(function( event ) {
+		if (!scrollTimeout) {		
+			scrollTimeout = setTimeout(scrollHandler, 2500);
+		}
+	});
+	
+	var scrollHandler = function() {
 		viewport.top = $( window ).scrollTop() + headerHeight;
 		viewport.bottom = viewport.top + headerHeight;
 		if ((
@@ -68,8 +75,8 @@ $( document ).ready(function() {
 		} else {
 			$facade.removeClass( "facade__featured-spirits_lit" );
 		}
-	});
-	
+		scrollTimeout = clearTimeout(scrollTimeout);
+	};
 });
 </script>
 </body>
