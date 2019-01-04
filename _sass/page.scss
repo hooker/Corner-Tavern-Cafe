@@ -15,13 +15,16 @@
 	margin: 0 auto -50vh;
 }
 .page__info {
-	padding-top: 50vh;
+	padding-top: calc(50vh + 3em);
 	margin: 0 auto -50vh;
+	max-width: 800px;
 }
 .page__featured {
-	padding-top: 50vh;
+	padding-top: calc(50vh + 3em);
 	margin: 0 auto -50vh;
+	max-width: 800px;
 }
 .page__footer {
+	padding-top: 50vh;
 	margin: 0 auto -50vh;
 }

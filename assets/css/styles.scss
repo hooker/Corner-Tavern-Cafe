@@ -5,8 +5,11 @@
 @import "header";
 @import "facade";
 @import "nav";
+
+/* Common styles */
 @import "link";
-@import "footer";
+@import "paragraph";
+@import "title";
 
 /* Menu styles */
 @import "menu";
@@ -15,6 +18,11 @@
 
 /* Info styles */
 @import "info";
+@import "hours";
 
 /* Featured styles */
 @import "featured";
+
+/* Footer styles */
+@import "footer";
+@import "logo";
