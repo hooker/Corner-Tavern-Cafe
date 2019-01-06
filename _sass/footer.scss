@@ -1,2 +1,29 @@
 /* Footer block */
-.footer {}
+.footer {
+	position: relative;
+}
+.footer__bam-logo {
+	margin: 0 auto;
+	padding: 0 0 20px;
+	max-width: 30%;
+	
+}
+.footer__info-logo {
+	margin: 0 auto;
+	padding: 0 0 10px;
+	max-width: 40%;
+}
+.footer__socials {
+	position: absolute;
+}
+.footer__line {
+	background-color: #ffffff;
+	height: 1px;
+	position: absolute;
+	bottom: 30px;
+	width: 100vw;
+	z-index: -1;
+}
+.footer__facebook-icon {}
+.footer__social-text {}
+.footer__instagram-icon {}

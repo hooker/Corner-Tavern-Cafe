@@ -5,7 +5,6 @@
 @import "header";
 @import "facade";
 @import "nav";
-@import "footer";
 
 /* Common styles */
 @import "link";
@@ -23,3 +22,7 @@
 
 /* Featured styles */
 @import "featured";
+
+/* Footer styles */
+@import "footer";
+@import "logo";
