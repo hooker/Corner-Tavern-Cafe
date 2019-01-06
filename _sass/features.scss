@@ -1,19 +1,19 @@
-/* Featured block */
-.featured {}
-.featured__title {
+/* Features block */
+.features {}
+.features__title {
 	box-sizing: border-box;
 	font-size: 2em;
 	padding: 0 .5em 1em;
 	text-align: center;
     width: 100%;
 }
-.featured__item {
+.features__item {
 	padding: 0 1em .125em;
 }
-.featured__name {
+.features__name {
 	padding: 0 0 .775em;
 }
-.featured__paragraph {
+.features__paragraph {
 	padding: 0 0 1em;
 	text-align: justify;
 }
