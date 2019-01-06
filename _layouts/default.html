@@ -14,11 +14,11 @@
 <main class="menu page__menu" id="menu">
 	{% include menu.html %}
 </main> <!-- End 'menu' section -->
-<main class="info page__info" id="info">
-	{% include info.html %}
-</main> <!-- End 'info' section -->
 <main class="featured page__featured" id="featured">
 	{% include featured.html %}
+</main> <!-- End 'featured' section -->
+<main class="info page__info" id="info">
+	{% include info.html %}
 </main> <!-- End 'info' section -->
 <footer class="footer page__footer">
 	{% include footer.html %}
@@ -26,57 +26,151 @@
 <script src="/assets/js/jquery-3.3.1.js"></script>
 <script>
 $( document ).ready(function() {
-	var $facade = $( ".facade__featured-spirits" );
+	function Bounds(top, bottom) {
+		// sanity check the order of the values
+		if (top <= bottom) {
+			this.top = top;
+			this.bottom = bottom;
+		} else {
+			this.top = bottom;
+			this.bottom = top;
+		}
+	}
+	Bounds.prototype.getSelectionBounds = function($selection) {
+		let topOfSelection = $selection.offset().top;
+		let bottomOfSelection = topOfSelection + $selection.height();
+		
+		return new Bounds(topOfSelection, bottomOfSelection);
+	}
+	Bounds.prototype.intersects = function(referenceBounds) {
+		if ((
+		     (referenceBounds.top > this.top) && 
+		     (referenceBounds.top < this.bottom)
+			) || (
+		     (referenceBounds.bottom > this.top) &&
+		     (referenceBounds.bottom < this.bottom)
+		    ) || (
+		     (referenceBounds.top < this.top) &&
+		     (referenceBounds.bottom > this.bottom)
+		    )
+		   ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	Bounds.prototype.toString = function () {
+		return '<Bounds: top: ' + this.top + ', bottom: ' + this.bottom + '>';
+	}
 	
-	var $featuredSpirits = $( "#featuredSpirits" );
-	var featuredSpiritsBounds = {};
-	featuredSpiritsBounds.top = $featuredSpirits.offset().top;
-	featuredSpiritsBounds.bottom = $featuredSpirits.height() + featuredSpiritsBounds.top;
+	/* An array of all the facade sign classes */
+	var facadeElementNames = [
+				   "facade__breakfast",
+				   "facade__daytime",
+				   "facade__signature-cocktails",
+				   "facade__signature-cocktails-hot",
+				   "facade__spirits",
+				   "facade__featured",
+				   "facade__info",
+				   "facade__contact",
+				   "facade__contact-door",
+				  ];
+	/* An array of all the IDs that will trigger a sign */
+	var triggerIds = [
+					  "#breakfast",
+					  "#daytime",
+					  "#signatureCocktails",
+					  "#signatureCocktailsHot",
+					  "#spirits",
+					  "#featured",
+					  "#info",
+					  "#contact",
+					  "#contactDoor",
+					 ];
 	
-	/* Calculate initial viewport size */
-	/* First determine height of the header */
-	var headerHeight = $( ".header" ).outerHeight();
-	/* Use the header height to offset the area to watch */
-	var viewport = {};
-	viewport.top = $( window ).scrollTop() + headerHeight;
-	viewport.bottom = viewport.top + headerHeight;
+	/* 
+	** All of the arrays need to be the same size. The application depends
+	** on the array elements being indexed the same.
+	*/
+	if (facadeElementNames.length !== triggerIds.length) {
+		throw "Mismatched number of facade signs and trigger ids.";
+	}
+	/* An array of JQuery selectors for each of the facade signs */
+	var $facades = new Array(facadeElementNames.length);
+	/* An array of top and bottom bounds for each of the trigger ids */
+	var triggerIdsBounds = new Array(triggerIds.length);
 	
-	/* Update viewport size if window changes size */
-	$( window ).resize(function( event ) {
-		headerHeight = $( ".header" ).outerHeight();
-		viewport.top = $( window ).scrollTop() + headerHeight;
-		viewport.bottom = viewport.top + headerHeight;
-		console.log("Viewport changed: " + JSON.stringify(viewport, null, 2));
+	/* Populate the facade sign selector array with JQuery selectors */
+	facadeElementNames.forEach(function(item, index, array) {
+		// Select the facade 
+		let $facade = $( '.' + item );
+		// Make sure an item was selected
+		if ($facade.length === 0) {
+			console.log("Unable to find a facade sign class with the name: '" +
+						item + "'.");
+			return; // end execution for this item in the forEach loop
+		}
+		$facades[index] = $facade.first(); // There should only be one.
+	});
+	
+	/* 
+	** Populate the boundaries array with Bounds for each trigger id.
+	*/
+	triggerIds.forEach(function(item, index, array) {
+		// Select the trigger id 
+		let $triggerId = $( item );
+		// Make sure an item was selected
+		if ($triggerId.length === 0) {
+			console.log("Unable to find an ID with the name: '" + item + "'.");
+			return; // end execution for this item in the forEach loop
+		}
+		// Create a Bounds object for this trigger
+		let bounds = Bounds.prototype.getSelectionBounds($triggerId.first());
+		// Add the Bounds object to the bounds array
+		triggerIdsBounds[index] = bounds;
+	});
+		
+	var getCurrentTriggerAreaBounds = function($window) {
+		let $header = $( ".header" ); // TODO: The DOM is queried on each call. Fix.
+		/* Use the header height to offset the area to watch */
+		let top = $window.scrollTop() + $header.outerHeight();
+		let bottom = $window.scrollTop() + $window.height();
+
+		return new Bounds(top, bottom);	
+	}
+	
+	var scrollTimeout; // global variable to limit scroll handler frequency
+	var scrollHandler = function() {
+		let triggerAreaBounds = getCurrentTriggerAreaBounds($window);
+		
+		triggerIdsBounds.forEach(function(item, index, array) {
+			let $correspondingFacadeElement = $facades[index];
+			let correspondingFacadeElementName = facadeElementNames[index];
+			if (item.intersects(triggerAreaBounds)) {
+				$correspondingFacadeElement.addClass( correspondingFacadeElementName + '_lit' );
+			} else {
+				$correspondingFacadeElement.removeClass( correspondingFacadeElementName + '_lit' );
+			}
+		});
+		
+		scrollTimeout = clearTimeout(scrollTimeout);
+	};
+	
+	/* First cache the window selector */
+	var $window = $( window );
+	
+	/* Check if the resize resulted in a change of visible triggers */
+	$window.resize(function( event ) {
+		console.log("Trigger area changed: " + getCurrentTriggerAreaBounds($window));
+		scrollHandler(); // TODO: I may need to consider scrollTimeout
 	});
 	
 	/* Handle scroll events */
-	var scrollTimeout; // global variable to limit scroll handler frequency
-	$( window ).scroll(function( event ) {
+	$window.scroll(function( event ) {
 		if (!scrollTimeout) {		
 			scrollTimeout = setTimeout(scrollHandler, 500);
 		}
 	});
-	
-	var scrollHandler = function() {
-		viewport.top = $( window ).scrollTop() + headerHeight;
-		viewport.bottom = viewport.top + headerHeight;
-		if ((
-		     (featuredSpiritsBounds.top > viewport.top) && 
-		     (featuredSpiritsBounds.top < viewport.bottom)
-		    ) || (
-		     (featuredSpiritsBounds.bottom > viewport.top) &&
-		     (featuredSpiritsBounds.bottom < viewport.bottom)
-		    ) || (
-		     (featuredSpiritsBounds.top < viewport.top) &&
-		     (featuredSpiritsBounds.bottom > viewport.bottom)
-		    )) {
-			$facade.addClass( "facade__featured-spirits_lit" );
-			     
-		} else {
-			$facade.removeClass( "facade__featured-spirits_lit" );
-		}
-		scrollTimeout = clearTimeout(scrollTimeout);
-	};
 });
 </script>
 </body>
