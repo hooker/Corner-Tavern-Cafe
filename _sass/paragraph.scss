@@ -4,5 +4,15 @@
 	font-style: normal;
 	font-weight: 200;
 	line-height: 1.125;
-	text-align: justify;
+	text-align: center;
+}
+.paragraph_roomy {
+	line-height: 2;
+}
+.paragraph_fancy {
+	font-style: italic;
+	
+}
+.paragraph_no-break {
+	white-space: pre;
 }
