@@ -1,29 +1,55 @@
 /* Info block */
 .info {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 	max-width: 600px;
 }
 .info__about {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex: 1;
+	order: 3;
+	margin: 0 auto;
+	max-width: 435px;
 }
 .info__title {
 	box-sizing: border-box;
+	flex: 1;
+	order: 1;
 	padding: 0 .5em 1em;
 	text-align: center;
     width: 100%;
 }
 .info__paragraphs {
-	flex: 2 0 320px;
 	padding: 0 1em .125em;
 }
 .info__paragraph {
 	padding: 0 0 1em;
 }
+.info__map {
+	flex: 1;
+	order: 2;
+}
+.info__map_placeholder {
+	background-color: #666;
+	height: 30vh;
+	width: 30vh;
+	max-width: 400px;
+	max-height: 400px;
+}
+.info__bam-logo {
+	margin: 0 auto;
+	padding: 0 0 20px;
+	width: 30vh;
+	max-width: 400px;
+	max-height: 400px;
+}
 .info__administration {
 	display: flex;
 	flex-direction: column;
-	flex: 0 1 220px;
+	flex: 1;
+	order: 4;
+	margin: 0 auto;
+	max-width: 240px;
 }
 .info__phone {
 	padding: 0 1em 0 0;
