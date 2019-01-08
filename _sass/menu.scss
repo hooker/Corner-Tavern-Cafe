@@ -2,29 +2,35 @@
 .menu {
 	display: flex;
 	flex-direction: column;
+	padding-right: calc(6px + 2em);
+	padding-left: calc(6px + 2em);
 	max-width: 600px;
 }
 .menu__heading {
 }
-.menu__header {
+.menu__heading_bordered {
+	margin-top: -2.8em;
+}
+.menu__heading_centered {
+	text-align: center;
+}
+.menu__title {
+}
+.menu__title_bordered {
+	background-color: #131413;
 	display: inline-block;
-	font-family: adage-script-jf, sans-serif;
-	font-size: 2.5em;
-	font-style: normal;
-	font-weight: 400;
-	padding: 1em 1em 0 .2em;
-	transform: rotate(-10deg);
-	transform-origin: bottom left;
+	padding: 0 0.3em;
 }
 .menu__item {
-	padding: 0 1em;
-}
-.menu__item ~ .menu__item {
-	padding-top: 1em;
+	margin: 1em 0;
+	padding: 0 0;
 }
 .menu__collection {
-	padding-top: 1em;
+	box-sizing: border-box;
 }
-#featuredSpirits {
-	background-color: rgba(200, 60, 60, .7);
+.menu__collection_border_round-rect {
+	border: 6px double #ffffff;
+	border-radius: 2em;
+	margin: 3em calc(-6px - 2em) 1em;
+	padding: 1em 2em;
 }
