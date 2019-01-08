@@ -1,5 +1,7 @@
 /* Features block */
-.features {}
+.features {
+	max-width: 600px;
+}
 .features__title {
 	box-sizing: border-box;
 	font-size: 2em;
