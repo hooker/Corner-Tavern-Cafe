@@ -1,12 +1,10 @@
 /* Nav block */
 .nav {
-	padding-bottom: 20px;
-	overflow: scroll;
 }
 .nav__list {
 	display: flex;
 	flex-wrap: nowrap;
-	justify-content: center;
+	justify-content: space-evenly;
 	list-style: none;
 }
 .nav__item {
@@ -15,9 +13,7 @@
 	font-style: normal;
 	font-weight: 200;
 }
-.nav__item ~ .nav__item {
-	margin-left: 2em;
-}
 .nav__link {
+	font-size: 2em;
 	text-transform: uppercase;
 }
