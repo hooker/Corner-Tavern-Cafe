@@ -26,3 +26,8 @@
 	padding-top: 50vh;
 	margin: 0 auto -50vh;
 }
+@media (max-width: 710px) {
+	@page__header {
+		overflow-y: hidden;
+	}
+}

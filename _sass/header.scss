@@ -6,11 +6,29 @@
 	background: linear-gradient(#141314 99%, #14131400);
 	height: 100%;
 	margin: 0 auto;
+	overflow-x: hidden;
 	position: relative;
+	width: 100%;
 }
 .header__nav {
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 	width: 100vw;
 	z-index: 1;
+}
+@media (max-width: 710px) {
+	.header__facade {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	.header__nav {
+		position: relative;
+		top: 0;
+		left: 0;
+		max-height: 50vh;
+		overflow-x: hidden;
+		overflow-y: auto;
+		z-index: 0;
+	}
 }
