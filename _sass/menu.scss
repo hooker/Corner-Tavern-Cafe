@@ -9,20 +9,24 @@
 .menu__heading {
 }
 .menu__heading_bordered {
-	margin-top: -2.8em;
+	margin-top: -3em;
 }
 .menu__heading_centered {
 	text-align: center;
 }
 .menu__title {
 }
+.menu__title_image {
+// 	background-color: #141314;
+	height: 4em;
+}
 .menu__title_border_round-rect {
-	background-color: #131413;
+	background-color: #141314;
 	display: inline-block;
 	padding: 0 0.3em 0;
 }
 .menu__title_border_top {
-	background-color: #131413;
+	background-color: #141314;
 	display: inline-block;
 	margin-left: -1em;
 	padding: 0 0.3em 0 1em;
