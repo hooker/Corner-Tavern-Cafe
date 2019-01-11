@@ -28,10 +28,12 @@
 		background-color: #999999;
 		background-color: #33333310;
 		border-bottom: solid 3px #fff;
+		display: block;
 		padding: .8em;
 		text-align: center;
-		width: 100vw;
 	}
 	.nav__link {
+		display: inline-block;
+		min-width: 70vw;
 	}
 }
