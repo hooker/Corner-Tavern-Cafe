@@ -8,7 +8,6 @@
 	position: fixed;
 	height: 50vh;
 	width: 100vw;
-	z-index: 20;
 }
 .page__menu {
 	padding-top: 50vh;
@@ -25,9 +24,4 @@
 .page__footer {
 	padding-top: 50vh;
 	margin: 0 auto -50vh;
-}
-@media (max-width: 710px) {
-	@page__header {
-		overflow-y: hidden;
-	}
 }

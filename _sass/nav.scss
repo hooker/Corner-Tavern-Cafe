@@ -17,23 +17,3 @@
 	font-size: 2em;
 	text-transform: uppercase;
 }
-@media (max-width: 710px) {
-	.nav__list {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: start;
-	}
-	.nav__item {
-		background-color: #999999;
-		background-color: #33333310;
-		border-bottom: solid 3px #fff;
-		display: block;
-		padding: .8em;
-		text-align: center;
-	}
-	.nav__link {
-		display: inline-block;
-		min-width: 70vw;
-	}
-}
