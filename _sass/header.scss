@@ -1,4 +1,7 @@
 /* Header block */
+$items: 4;
+$transition-delay: 0.05s;
+$transition-duration: 0.5s;
 .header {
 }
 .header__facade {
@@ -7,12 +10,59 @@
 	height: 100%;
 	margin: 0 auto;
 	overflow-x: hidden;
-	position: relative;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	width: 100%;
 	z-index: -1;
 }
 .header__nav {
+}
+.header__toggle-nav-button {
 	position: absolute;
-	bottom: 0;
-	width: 100vw;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: 25px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	border-radius: 100%;
+	transition: $transition-duration + 0.1;
+	
+}
+// Begin copy and paste
+#toggle {
+	position: absolute;
+	top: -100%;
+	left: -100%;
+}
+#toggle:checked {
+	& ~ .header__nav .nav__list {
+		// Restore nav items from "lines"
+		.nav__item {
+			color: #EC7263;
+			letter-spacing: 0;
+			height: 40px;
+			line-height: 40px;
+			margin-top: 0;
+			opacity: 1;
+			transform: scaleY(1);
+			transition: $transition-duration, opacity 0.1s;
+			// set delays for the nav items in the open transition
+			@for $i from 1 through $items {
+				&:nth-child(#{$i}) {
+					$delay: ($items - $i) * $transition-delay;
+					transition-delay: $delay;
+					&::before {
+						transition-delay: $delay;
+					}
+				}
+			}
+			// Hiding the "lines"
+			&::before {
+				opacity: 0;
+			}	
+		}
+	}
 }
