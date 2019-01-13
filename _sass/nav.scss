@@ -1,5 +1,8 @@
 /* Nav block */
 .nav {
+	display: inline-block;
+	pointer-events: none;
+	transition: $transition-duration;
 }
 .nav__list {
 	list-style: none;

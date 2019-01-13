@@ -22,10 +22,7 @@ $transition-duration: 0.5s;
 	z-index: -1;
 }
 .header__nav {
-	display: inline-block;
 	margin: 36px;
-	pointer-events: none;
-	transition: $transition-duration;
 }
 .header__toggle-nav-control:checked ~ .header__nav {
 	margin-bottom: 100px; // TODO: Probably can delete
