@@ -20,6 +20,16 @@
 // 	background-color: #141314;
 	height: 4em;
 }
+.menu__title_aligned_left {
+	margin-left: -1em;
+}
+// .menu__title_aligned_left::before {
+// 	display: absolute;
+// 	content: '';
+// 	top: 0
+// 	left: -2em;
+// 	background-color: #141314;
+// }
 .menu__title_border_round-rect {
 	background-color: #141314;
 	display: inline-block;
@@ -35,19 +45,22 @@
 	margin: 1em 0;
 	padding: 0 0;
 }
+.menu__item_spacing_tight {
+	margin: .5em 0;
+}
 .menu__collection {
 	box-sizing: border-box;
 }
 .menu__collection_border_round-rect {
-	border: 6px double #ffffff;
+	border: 4px double #ffffff;
 	border-radius: 2em;
-	margin: 3em calc(-6px - 2em) 1em;
+	margin: 3em calc(-4px - 2em) 1em;
 	padding: 1em 2em;
 }
 .menu__collection_border_top {
-	border-top: 6px double #fff;
-	border-right: 6px double #fff;
+	border-top: 4px double #fff;
+	border-right: 4px double #fff;
 	border-top-right-radius: 2em;
-	margin: 3em calc(-6px - 2em) 1em;
+	margin: 3em calc(-4px - 2em) 1em;
 	padding: 1em 2em;
 }
