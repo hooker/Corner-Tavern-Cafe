@@ -12,15 +12,17 @@
 <header class="header page__header">
 {% include header.html %}
 </header>
-<main class="menu page__menu" id="menu">
-{% include menu.html %}
-</main> <!-- End 'menu' section -->
-<main class="features page__features" id="features">
+<main class="page__content">
+<section class="features page__features" id="features">
 {% include features.html %}
-</main> <!-- End 'features' section -->
-<main class="info page__info" id="info">
+</section> <!-- End 'features' section -->
+<section class="menu page__menu" id="menu">
+{% include menu.html %}
+</section> <!-- End 'menu' section -->
+<section class="info page__info" id="info">
 {% include info.html %}
-</main> <!-- End 'info' section -->
+</section> <!-- End 'info' section -->
+</main>
 <footer class="footer page__footer" id="contact">
 {% include footer.html %}
 </footer>
