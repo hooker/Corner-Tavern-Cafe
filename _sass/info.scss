@@ -28,6 +28,10 @@
 .info__map {
 	flex: 1;
 	order: 2;
+	height: 30vh;
+	width: 30vh;
+	max-width: 400px;
+	max-height: 400px;
 }
 .info__map_placeholder {
 	background-color: #666;
