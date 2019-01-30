@@ -5,18 +5,24 @@
     font-weight: 700;
     line-height: 1.125;
 }
+.title_align_center {
+	text-align: center;
+}
+.title_image {
+	max-width:100%;
+}
 .title_size_page {
 	font-size: 2em;
 }
 .title_size_features {
 	font-size: 1.125em;
 }
+.title_size_menu {
+	font-size: 2.5em;	
+}
 .title_style_script {
 	font-family: adage-script-jf, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	
-}
-.title_size_menu {
-	font-size: 2.5em;	
 }
