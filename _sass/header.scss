@@ -25,6 +25,8 @@ $transition-duration: 0.5s;
 	margin: 36px;
 }
 .header__toggle-nav-control:checked ~ .header__nav {
+	background-color: #141314;
+	box-shadow: 0 0 100px 50px #141314;
 	margin-bottom: 100px; // TODO: Probably can delete
 	pointer-events: auto;
 	transform: translate(0, 50px);
