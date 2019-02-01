@@ -8,28 +8,50 @@
 }
 .menu__heading {
 }
-.menu__heading_bordered {
-	margin-top: -3em;
-}
 .menu__heading_centered {
 	text-align: center;
 }
 .menu__title {
 }
-.menu__title_image {
-// 	background-color: #141314;
+.menu__morning-things,
+.menu__breakfast-sandwiches,
+.menu__breakfast-paninis,
+.menu__daytime-things,
+.menu__signature-cocktails,
+.menu__featured-spirits {
+	margin-left: auto;
+	margin-right: auto;
+	width: 30vh;
+	max-width: 400px;
+	max-height: 400px;
+}
+.menu__breakfast-sandwiches,
+.menu__breakfast-paninis {
+	margin-top: -9vh;
+}
+.menu__paninis,
+.menu__wraps,
+.menu__salads {
+	margin-top: 0;
+	margin-left: -3em;
+	max-width: 300px;
+}
+.menu__signature-cocktails-hot,
+.menu__whiskey,
+.menu__scotch,
+.menu__gin,
+.menu__vodka {
 	height: 4em;
+	margin-top: 0;
+	margin-left: -2em;
+	max-width: 150px;
+}
+.menu__title_image {
+	width: 100%;
 }
 .menu__title_aligned_left {
 	margin-left: -1em;
 }
-// .menu__title_aligned_left::before {
-// 	display: absolute;
-// 	content: '';
-// 	top: 0
-// 	left: -2em;
-// 	background-color: #141314;
-// }
 .menu__title_border_round-rect {
 	background-color: #141314;
 	display: inline-block;
@@ -54,13 +76,11 @@
 .menu__collection_border_round-rect {
 	border: 4px double #ffffff;
 	border-radius: 2em;
-	margin: 3em calc(-4px - 2em) 1em;
+	margin: 9vh calc(-4px - 2em) 1em;
 	padding: 1em 2em;
 }
 .menu__collection_border_top {
 	border-top: 4px double #fff;
-	border-right: 4px double #fff;
-	border-top-right-radius: 2em;
-	margin: 3em calc(-4px - 2em) 1em;
+	margin: 6em calc(-4px - 2em) 1em;
 	padding: 1em 2em;
 }
