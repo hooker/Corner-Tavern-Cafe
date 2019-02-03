@@ -8,8 +8,11 @@
 .item__price {
 	font-size: 1.5em;
 }
+.item__name_size_small,
+.item__price_size_small {
+	font-size: 1.25em;
+}
 .item__name_size_small {
-	font-size: 1em;
 }
 .item__info {
 	flex: 1;
@@ -36,7 +39,6 @@
 .item__price {
 }
 .item__price_size_small {
-	font-size: 1em;
 }
 .item__price_cents {
 	font-size: .6em;
