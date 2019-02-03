@@ -16,6 +16,7 @@
 .menu__morning-things,
 .menu__daytime-things,
 .menu__signature-cocktails,
+.menu__signature-cocktails-hot,
 .menu__featured-spirits {
 	margin-left: auto;
 	margin-right: auto;
@@ -26,6 +27,7 @@
 	.menu__morning-things,
 	.menu__daytime-things,
 	.menu__signature-cocktails,
+	.menu__signature-cocktails-hot,
 	.menu__featured-spirits {
 		margin-left: auto;
 		margin-right: auto;
@@ -43,7 +45,6 @@
 .menu__paninis,
 .menu__wraps,
 .menu__salads,
-.menu__signature-cocktails-hot,
 .menu__whiskey,
 .menu__scotch,
 .menu__gin,
@@ -58,7 +59,6 @@
 	.menu__paninis,
 	.menu__wraps,
 	.menu__salads,
-	.menu__signature-cocktails-hot,
 	.menu__whiskey,
 	.menu__scotch,
 	.menu__gin,
@@ -91,6 +91,9 @@
 }
 .menu__item_spacing_tight {
 	margin: .5em 0;
+}
+.menu__heading + .menu__collection {
+	margin-top: 0;
 }
 .menu__collection {
 	box-sizing: border-box;
