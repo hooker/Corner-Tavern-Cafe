@@ -99,6 +99,11 @@
 	box-sizing: border-box;
 	margin-top: 4em;
 }
+.menu__collection_width_narrow {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 400px;
+}
 .menu__collection_border_round-rect {
 	border: 4px double #ffffff;
 	border-radius: 2em;
