@@ -28,79 +28,78 @@
 </footer>
 <script src="/assets/js/jquery-3.3.1.js"></script>
 <script>
+function Bounds(top, bottom) {
+  // sanity check the order of the values
+  if (top <= bottom) {
+    this.top = top;
+    this.bottom = bottom;
+  } else {
+    this.top = bottom;
+    this.bottom = top;
+  }
+}
+Bounds.prototype.getSelectionBounds = function($selection) {
+  let topOfSelection = $selection.offset().top;
+  let bottomOfSelection = topOfSelection + $selection.height();
+  
+  return new Bounds(topOfSelection, bottomOfSelection);
+}
+Bounds.prototype.intersects = function(referenceBounds) {
+  if ((
+       (referenceBounds.top > this.top) && 
+       (referenceBounds.top < this.bottom)
+    ) || (
+       (referenceBounds.bottom > this.top) &&
+       (referenceBounds.bottom < this.bottom)
+      ) || (
+       (referenceBounds.top < this.top) &&
+       (referenceBounds.bottom > this.bottom)
+      )
+     ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+Bounds.prototype.toString = function () {
+  return '<Bounds: top: ' + this.top + ', bottom: ' + this.bottom + '>';
+}
+/* An array of all the facade sign classes */
+var facadeElementNames = [
+         "facade__features",
+         "facade__breakfast",
+         "facade__daytime",
+         "facade__signature-cocktails",
+         "facade__signature-cocktails-hot",
+         "facade__spirits",
+         "facade__info",
+         "facade__contact",
+        ];
+/* An array of all the IDs that will trigger a sign */
+var triggerIds = [
+          "#features",
+          "#breakfast",
+          "#daytime",
+          "#signatureCocktails",
+          "#signatureCocktailsHot",
+          "#spirits",
+          "#info",
+          "#contact",
+         ];
+/* 
+** All of the arrays need to be the same size. The application depends
+** on the array elements being indexed the same.
+*/
+if (facadeElementNames.length !== triggerIds.length) {
+  throw "Mismatched number of facade signs and trigger ids.";
+}
+/* An array of JQuery selectors for each of the facade signs */
+var $facades = new Array(facadeElementNames.length);
+/* An array of top and bottom bounds for each of the trigger ids */
+var triggerIdsBounds = new Array(triggerIds.length);
+
 $( document ).ready(function() {
-	function Bounds(top, bottom) {
-		// sanity check the order of the values
-		if (top <= bottom) {
-			this.top = top;
-			this.bottom = bottom;
-		} else {
-			this.top = bottom;
-			this.bottom = top;
-		}
-	}
-	Bounds.prototype.getSelectionBounds = function($selection) {
-		let topOfSelection = $selection.offset().top;
-		let bottomOfSelection = topOfSelection + $selection.height();
-		
-		return new Bounds(topOfSelection, bottomOfSelection);
-	}
-	Bounds.prototype.intersects = function(referenceBounds) {
-		if ((
-		     (referenceBounds.top > this.top) && 
-		     (referenceBounds.top < this.bottom)
-			) || (
-		     (referenceBounds.bottom > this.top) &&
-		     (referenceBounds.bottom < this.bottom)
-		    ) || (
-		     (referenceBounds.top < this.top) &&
-		     (referenceBounds.bottom > this.bottom)
-		    )
-		   ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	Bounds.prototype.toString = function () {
-		return '<Bounds: top: ' + this.top + ', bottom: ' + this.bottom + '>';
-	}
-	
-	/* An array of all the facade sign classes */
-	var facadeElementNames = [
-				   "facade__features",
-				   "facade__breakfast",
-				   "facade__daytime",
-				   "facade__signature-cocktails",
-				   "facade__signature-cocktails-hot",
-				   "facade__spirits",
-				   "facade__info",
-				   "facade__contact",
-				  ];
-	/* An array of all the IDs that will trigger a sign */
-	var triggerIds = [
-					  "#features",
-					  "#breakfast",
-					  "#daytime",
-					  "#signatureCocktails",
-					  "#signatureCocktailsHot",
-					  "#spirits",
-					  "#info",
-					  "#contact",
-					 ];
-	
-	/* 
-	** All of the arrays need to be the same size. The application depends
-	** on the array elements being indexed the same.
-	*/
-	if (facadeElementNames.length !== triggerIds.length) {
-		throw "Mismatched number of facade signs and trigger ids.";
-	}
-	/* An array of JQuery selectors for each of the facade signs */
-	var $facades = new Array(facadeElementNames.length);
-	/* An array of top and bottom bounds for each of the trigger ids */
-	var triggerIdsBounds = new Array(triggerIds.length);
-	
+
 	/* Populate the facade sign selector array with JQuery selectors */
 	facadeElementNames.forEach(function(item, index, array) {
 		// Select the facade 
