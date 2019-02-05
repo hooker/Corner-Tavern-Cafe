@@ -101,6 +101,8 @@ if (facadeElementNames.length !== triggerIds.length) {
 var $facades = new Array(facadeElementNames.length);
 /* An array of top and bottom bounds for each of the trigger ids */
 var triggerIdsBounds = new Array(triggerIds.length);
+/* Bound object with the current trigger boundaries */
+var triggerAreaBounds;
 
 $( document ).ready(function() {
 
@@ -120,20 +122,23 @@ $( document ).ready(function() {
 	/* 
 	** Populate the boundaries array with Bounds for each trigger id.
 	*/
-	triggerIds.forEach(function(item, index, array) {
-		// Select the trigger id 
-		let $triggerId = $( item );
-		// Make sure an item was selected
-		if ($triggerId.length === 0) {
-			console.log("Unable to find an ID with the name: '" + item + "'.");
-			return; // end execution for this item in the forEach loop
-		}
-		// Create a Bounds object for this trigger
-		let bounds = Bounds.prototype.getSelectionBounds($triggerId.first());
-		// Add the Bounds object to the bounds array
-		triggerIdsBounds[index] = bounds;
-	});
-		
+	var updateTriggerIdsBounds = function() {
+	
+	  triggerIds.forEach(function(item, index, array) {
+      // Select the trigger id 
+      let $triggerId = $( item );
+      // Make sure an item was selected
+      if ($triggerId.length === 0) {
+        console.log("Unable to find an ID with the name: '" + item + "'.");
+        return; // end execution for this item in the forEach loop
+      }
+      // Create a Bounds object for this trigger
+      let bounds = Bounds.prototype.getSelectionBounds($triggerId.first());
+      // Add the Bounds object to the bounds array
+      triggerIdsBounds[index] = bounds;
+    });
+  };
+  		
 	var getCurrentTriggerAreaBounds = function($window) {
 		let $header = $( ".header" ); // TODO: The DOM is queried on each call. Fix.
 		/* Use the header height to offset the area to watch */
@@ -144,9 +149,7 @@ $( document ).ready(function() {
 	}
 	
 	var scrollTimeout; // global variable to limit scroll handler frequency
-	var scrollHandler = function() {
-		let triggerAreaBounds = getCurrentTriggerAreaBounds($window);
-		
+	var scrollHandler = function(triggerAreaBounds) {
 		triggerIdsBounds.forEach(function(item, index, array) {
 			let $correspondingFacadeElement = $facades[index];
 			let correspondingFacadeElementName = facadeElementNames[index];
@@ -165,19 +168,24 @@ $( document ).ready(function() {
 	
 	/* Check if the resize resulted in a change of visible triggers */
 	$window.resize(function( event ) {
-		console.log("Trigger area changed: " + getCurrentTriggerAreaBounds($window));
-		scrollHandler(); // TODO: I may need to consider scrollTimeout
+	  triggerAreaBounds = getCurrentTriggerAreaBounds($window);
+		console.log("Trigger area changed: " + triggerAreaBounds);		
+    updateTriggerIdsBounds();
+		scrollHandler(triggerAreaBounds); // TODO: I may need to consider scrollTimeout
 	});
 	
 	/* Handle scroll events */
-	$window.scroll(function( event ) {
+	$window.scroll(function( event ) {	  
+    triggerAreaBounds = getCurrentTriggerAreaBounds($window);
 		if (!scrollTimeout) {		
-			scrollTimeout = setTimeout(scrollHandler, 500);
+			scrollTimeout = setTimeout(scrollHandler, 500, triggerAreaBounds);
 		}
 	});
 	
 	// Initial check to see if any elements should display
-	scrollHandler();
+	triggerAreaBounds = getCurrentTriggerAreaBounds($window);
+	updateTriggerIdsBounds();
+	scrollHandler(triggerAreaBounds);
 });
 </script>
 </body>
