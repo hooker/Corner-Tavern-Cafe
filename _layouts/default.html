@@ -39,7 +39,11 @@ function Bounds(top, bottom) {
   }
 }
 Bounds.prototype.getSelectionBounds = function($selection) {
-  let topOfSelection = $selection.offset().top;
+  let topPadding = $selection.css("paddingTop");
+  /* topPadding may be a float but performance is worse with parseFloat */
+  topPadding = parseInt(topPadding, 10);
+  if (isNaN(topPadding)) { topPadding = 0; }
+  let topOfSelection = $selection.offset().top + topPadding;
   let bottomOfSelection = topOfSelection + $selection.height();
   
   return new Bounds(topOfSelection, bottomOfSelection);
