@@ -1,12 +1,17 @@
 /* Winter Whiskey Week block */
+.www + .www {
+	margin-top: 3em;
+}
 .www {}
 .www__title {
 	text-align: center;
 	padding-bottom: 2em;
 }
+.www__distillery ~ .www__distillery {
+	margin-top: 2em;
+}
 .www__distillery {
 	text-align: center;
-	
 }
 .www__headquarters {
 	padding-bottom: 1.5em;
@@ -19,6 +24,9 @@
 }
 .www__name {
 	text-align: center;
+}
+.www__description + .www__description {
+	margin-top: 1em;
 }
 .www__description {
 	text-align: center;
