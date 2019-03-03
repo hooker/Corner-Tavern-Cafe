@@ -5,3 +5,12 @@
 	margin: 3em auto 1em;
 	max-width: 435px;	
 }
+.footer__socials {
+	display: flex;
+	flex-direction: column;
+	margin: 1em auto;
+	max-width: 435px;
+}
+.footer__social {
+	flex: 1;
+}
