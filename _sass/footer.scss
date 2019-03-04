@@ -2,15 +2,20 @@
 .footer {
 }
 .footer__address {
-	margin: 3em auto 1em;
+	margin: 3em auto 0;
 	max-width: 435px;	
 }
 .footer__socials {
 	display: flex;
 	flex-direction: column;
-	margin: 1em auto;
+	margin: 0 auto;
+	padding-bottom: 1em;
 	max-width: 435px;
+}
+.footer__social ~ .footer__social {
+	margin-top: 1em;
 }
 .footer__social {
 	flex: 1;
+	padding: 0 1em;
 }
