@@ -39,8 +39,9 @@
 	max-height: 400px;
 }
 .info__bam-logo {
+	box-sizing: border-box;
 	margin: 0 auto;
-	padding: 0 0 20px;
+	padding: 0 1em 20px;
 	width: 100%;
 }
 .info__administration {
