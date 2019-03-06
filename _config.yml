@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   including gluten-free and vegetarian options. 
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://cornertaverncafe.com" # the base hostname & protocol for your site, e.g. http://example.com
-facade_version: "1.4"
+facade_version: "1.4.1"
 css_version: "1.6"
 
 # Build settings
